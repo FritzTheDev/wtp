@@ -4,22 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Water Marketplace</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body>
-<h1 class="display-4 text-center">Water Listings</h1>
-{% if last_ten_listings %}
-  <ul class="list-group">
-    {% for listing in last_ten_listings %}
-      <li class="list-group-item">
-        <p class="lead text-center">{{listing.af_available}}</p>
-        <p class="mr-auto">{{listing.user}}</p>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No Listings Found. There's likely something wrong with your internet connection.</p>
-{% endif %} 
+<body class="bg-secondary">
+<h1 class="display-4 text-white text-center">The Water Agency Inc. Water Marketplace</h1>
+<div class="container-fluid">
+  <div class="row">
+      {% if last_ten_listings %}
+          {% for listing in last_ten_listings %}
+          <div class="col-md-4" style="margin-bottom: 25px;">
+          <ul class="list-group">
+            <li class="list-group-item text-center">
+              <h4 class="text-center">{{listing.af_available}} Acre-Feet Available</h4>
+              <hr>
+              <h5 class="text-center">Listed By: {{listing.user.first_name}} {{listing.user.last_name}}</h5>
+              <hr>
+              <h5 class="text-center">Offered At ${{listing.price_per_af}}/Acre-Foot</h5></span>
+              <hr>
+              <h5 class="text-center d-block">Water District: {{listing.water_district}}</h5>
+              <hr>
+              <button class="btn btn-primary text-center"><div class="lead">More Info</div></button>
+            </li>
+          </ul>
+          </div>
+          {% endfor %}
+      {% else %}
+        <p>No Listings Found. There's likely something wrong with your internet connection.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 </body>
 </html>
