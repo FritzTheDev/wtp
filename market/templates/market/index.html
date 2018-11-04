@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<h1 class="display-4 text-center">Water Listings</h1>
+{% if last_ten_listings %}
+  <ul class="list-group">
+    {% for listing in last_ten_listings %}
+      <li class="list-group-item">
+        <p class="lead text-center">{{listing.af_available}}</p>
+        <p class="mr-auto">{{listing.user}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Listings Found. There's likely something wrong with your internet connection.</p>
+{% endif %} 
+</body>
+</html>
